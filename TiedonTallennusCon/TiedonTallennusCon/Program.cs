@@ -10,14 +10,27 @@ namespace TiedonTallennusCon
     class Program
     {
         static void Main(string[] args)
-        {
+        {   string tiedosto = @"D:\Visualstudiosettia\lämpötila.txt";
+            //Luetaan tiedostosta aiemmin asetettu lämpötila 
+            if (File.Exists(tiedosto))
+            {
+                string aiempiArvo = File.ReadAllText(tiedosto);
+                Console.WriteLine("aiemmin asetettu lämpötila on " + aiempiArvo + " astetta.");
+
+            }
+            else
+            {
+                Console.WriteLine("Tervetuloa!");
+            }
+
+
             int lämpötila = 0;
             Console.Write("Anna uusi lämpötila: ");
             string syöte = Console.ReadLine();
             lämpötila = int.Parse(syöte);
 
             //tiedostoon kirjoittaminen
-            string tiedosto = @"D:\Visualstudiosettia\lämpötila.txt";
+           
             File.WriteAllText(tiedosto, lämpötila.ToString());
             Console.WriteLine("Uusi lämpötila tallennettu.");
 
